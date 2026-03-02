@@ -1,6 +1,6 @@
 package model;
 
-class Estacao extends ElementoTrilho {
+public class Estacao extends ElementoTrilho {
     private String nome;
 
     public Estacao(int posicao, String nome) {
