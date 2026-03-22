@@ -29,7 +29,7 @@ public class GerenciadorEstacoes {
 
             validarNumero(sobem);
             validarNumero(descem);
-            
+
             dadosPassageiros[i][0] = sobem;
             dadosPassageiros[i][1] = descem;
 
@@ -37,9 +37,17 @@ public class GerenciadorEstacoes {
     }
 
     private void validarNumero(int numero) {
-    if (numero < 0) {
-        throw new IllegalArgumentException("Número não pode ser negativo");
+        if (numero < 0) {
+            throw new IllegalArgumentException("Número não pode ser negativo");
+        }
     }
-}
+
+    public void exibirDados() {
+        for (int i = 0; i < numeroEstacoes; i++) {
+            System.out.println("Estação " + i +
+                    " | Sobem: " + dadosPassageiros[i][0] +
+                    " | Descem: " + dadosPassageiros[i][1]);
+        }
+    }
 
 }
