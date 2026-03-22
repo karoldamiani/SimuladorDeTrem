@@ -24,7 +24,7 @@ public class GerenciadorEstacoes {
 
             do {
                 sobem = random.nextInt(11);
-                descem = random.nextInt(11);
+                descem = random.nextInt(sobem + 1);
             } while ((sobem + descem) % 2 != 0);
 
             validarNumero(sobem);
