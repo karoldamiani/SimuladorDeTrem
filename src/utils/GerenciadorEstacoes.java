@@ -27,8 +27,19 @@ public class GerenciadorEstacoes {
                 descem = random.nextInt(11);
             } while ((sobem + descem) % 2 != 0);
 
+            validarNumero(sobem);
+            validarNumero(descem);
+            
             dadosPassageiros[i][0] = sobem;
             dadosPassageiros[i][1] = descem;
+
         }
     }
+
+    private void validarNumero(int numero) {
+    if (numero < 0) {
+        throw new IllegalArgumentException("Número não pode ser negativo");
+    }
+}
+
 }
