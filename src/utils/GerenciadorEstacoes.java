@@ -1,7 +1,9 @@
 package utils;
 
+import java.util.Random;
+
 public class GerenciadorEstacoes {
-    
+
     private int[][] dadosPassageiros;
     private int numeroEstacoes;
 
@@ -12,5 +14,21 @@ public class GerenciadorEstacoes {
 
     public int[][] getDadosPassageiros() {
         return dadosPassageiros;
+    }
+
+    public void sortearPassageiros() {
+        Random random = new Random();
+
+        for (int i = 0; i < numeroEstacoes; i++) {
+            int sobem, descem;
+
+            do {
+                sobem = random.nextInt(11);
+                descem = random.nextInt(11);
+            } while ((sobem + descem) % 2 != 0);
+
+            dadosPassageiros[i][0] = sobem;
+            dadosPassageiros[i][1] = descem;
+        }
     }
 }
