@@ -12,7 +12,7 @@ public class Trilho {
         NoTrilho novo = new NoTrilho(elemento);
 
         if (inicio == null) {
-            inicio == novo;
+            inicio = novo;
         } else {
             NoTrilho atual = inicio;
             while (atual.getProximo() !=null) {

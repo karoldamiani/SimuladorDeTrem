@@ -2,6 +2,10 @@ package model;
 
 public class Estacao extends ElementoTrilho {
     private String nome;
+    private int passageirosPresentes = 0;
+
+    private int pessoasSubindo;
+    private int pessoasDescendo;
 
     public Estacao(int posicao, String nome) {
         super(posicao);
@@ -12,8 +16,7 @@ public class Estacao extends ElementoTrilho {
     public void exibir() {
         System.out.println("Estação: " + nome + " na posição " + posicao);
     }
-
-    private int passageirosPresentes = 0;
+        
 
     public void embarcar(int qtd) {
         if (qtd < 0) {
@@ -32,4 +35,21 @@ public class Estacao extends ElementoTrilho {
     public int getPassageirosPresentes() {
         return passageirosPresentes;
     }
+
+    public void setPessoasSubindo(int pessoasSubindo) {
+        this.pessoasSubindo = pessoasSubindo;
+    }
+
+    public void setPessoasDescendo(int pessoasDescendo) {
+        this.pessoasDescendo = pessoasDescendo;
+    }
+
+    public int getPessoasSubindo() {
+        return pessoasSubindo;
+    }
+
+    public int getPessoasDescendo() {
+        return pessoasDescendo;
+    }
+
 }
