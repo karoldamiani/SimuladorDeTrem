@@ -29,4 +29,30 @@ public class Trem {
     public int getPosicaoAtual() {
         return posicaoAtual;
     }
+
+
+    // Modelo Recursão prof
+    public int calcularTempoTotal(NoTrilho noAtual) {
+
+    // Caso base
+    if (noAtual == null) {
+        return 0;
+    }
+
+    int tempoNoAtual = 1; // 1 km = 1 minuto
+
+    if (noAtual.getElemento() instanceof Estacao) {
+        Estacao estacao = (Estacao) noAtual.getElemento();
+
+        int pessoas = estacao.getPessoasSubindo() + estacao.getPessoasDescendo();
+
+        if (pessoas == 0) {
+            tempoNoAtual += 1;
+        } else {
+            tempoNoAtual += (pessoas * 30) / 60;
+        }
+    }
+
+    return tempoNoAtual + calcularTempoTotal(noAtual.getProximo());
+}
 }
