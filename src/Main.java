@@ -1,4 +1,6 @@
 import model.Estacao;
+import model.Trem;
+import model.Trilho;
 import model.ElementoTrilho;
 import utils.GerenciadorEstacoes;
 
@@ -28,7 +30,6 @@ public class Main {
 
         int[][] dados = gerenciador.getDadosPassageiros();
 
-        
         int index = 0;
 
         for (int i = 0; i < trilho.length; i++) {
@@ -48,10 +49,9 @@ public class Main {
 
                 index++;
             }
-        }
-
+        }   
+        
 
     }
 
-    
 }
