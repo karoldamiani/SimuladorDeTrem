@@ -1,6 +1,6 @@
 package model;
 
-public abstract class ElementoTrilho {
+public abstract class ElementoTrilho implements Elemento {
    protected int posicao;
 
     

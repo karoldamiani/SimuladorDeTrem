@@ -1,24 +1,23 @@
 package model;
 
-public class NoTrilho {
+public class NoTrilho<T extends Elemento> {
 
-    private ElementoTrilho elemento;
-    private NoTrilho proximo;
+    private T elemento;
+    private NoTrilho<T> proximo;
 
-    public NoTrilho(ElementoTrilho elemento) {
+    public NoTrilho(T elemento) {
         this.elemento = elemento;
-        this.proximo = null;
     }
-    
-    public ElementoTrilho getElemento() {
+
+    public T getElemento() {
         return elemento;
     }
 
-    public NoTrilho getProximo() {
+    public NoTrilho<T> getProximo() {
         return proximo;
     }
 
-    public void setProximo(NoTrilho proximo) {
+    public void setProximo(NoTrilho<T> proximo) {
         this.proximo = proximo;
     }
 }

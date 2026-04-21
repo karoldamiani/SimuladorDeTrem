@@ -32,7 +32,7 @@ public class Trem {
     }
 
     // Modelo Recursão prof
-    public int calcularTempoTotal(NoTrilho noAtual) {
+    public int calcularTempoTotal(NoTrilho<Elemento> noAtual) {
 
         // Caso base
         if (noAtual == null) {

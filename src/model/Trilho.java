@@ -2,25 +2,23 @@ package model;
 
 public class Trilho {
 
-    private NoTrilho inicio;
+    private NoTrilho<Elemento> inicio;
 
-    public NoTrilho getInicio() {
+    public NoTrilho<Elemento> getInicio() {
         return inicio;
     }
 
-    public void adicionarElemento(ElementoTrilho elemento) {
-        NoTrilho novo = new NoTrilho(elemento);
+    public void adicionarElemento(Elemento elemento) {
+        NoTrilho<Elemento> novo = new NoTrilho<>(elemento);
 
         if (inicio == null) {
             inicio = novo;
         } else {
-            NoTrilho atual = inicio;
-            while (atual.getProximo() !=null) {
+            NoTrilho<Elemento> atual = inicio;
+            while (atual.getProximo() != null) {
                 atual = atual.getProximo();
-                
             }
             atual.setProximo(novo);
         }
     }
-    
 }
