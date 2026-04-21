@@ -5,7 +5,7 @@
 
 //     public static void main(String[] args) {
 
-//         // 1️⃣ Criar trilho encadeado
+//         // trilho encadeado
 //         Trilho trilho = new Trilho();
 
 //         // trecho comum (1 km)
@@ -28,10 +28,10 @@
 //             public void exibir() {}
 //         });
 
-//         // 2️⃣ Criar trem
+//         // Criar trem
 //         Trem trem = new Trem();
 
-//         // 3️⃣ Calcular tempo total
+//         // Calcular tempo total
 //         int tempo = trem.calcularTempoTotal(trilho.getInicio());
 
 //         System.out.println("Tempo total calculado: " + tempo + " minutos");

@@ -4,6 +4,9 @@ public class Estacao extends ElementoTrilho {
     private String nome;
     private int passageirosPresentes = 0;
 
+    private int totalPassageirosSubiram = 0;
+    private int totalPassageirosDesceram = 0;
+
     private int pessoasSubindo;
     private int pessoasDescendo;
 
@@ -16,7 +19,6 @@ public class Estacao extends ElementoTrilho {
     public void exibir() {
         System.out.println("Estação: " + nome + " na posição " + posicao);
     }
-        
 
     public void embarcar(int qtd) {
         if (qtd < 0) {
@@ -27,9 +29,9 @@ public class Estacao extends ElementoTrilho {
 
     public void desembarcar(int qtd) {
         if (qtd < 0 || qtd > passageirosPresentes) {
-        throw new IllegalArgumentException("Erro no desembarque");
-    }
-    passageirosPresentes -= qtd;
+            throw new IllegalArgumentException("Erro no desembarque");
+        }
+        passageirosPresentes -= qtd;
     }
 
     public int getPassageirosPresentes() {
@@ -50,6 +52,23 @@ public class Estacao extends ElementoTrilho {
 
     public int getPessoasDescendo() {
         return pessoasDescendo;
+    }
+
+    public void registrarMovimento() {
+        totalPassageirosSubiram += pessoasSubindo;
+        totalPassageirosDesceram += pessoasDescendo;
+    }
+
+    public int getTotalPassageirosSubiram() {
+        return totalPassageirosSubiram;
+    }
+
+    public int getTotalPassageirosDesceram() {
+        return totalPassageirosDesceram;
+    }
+
+    public int getFluxoTotal() {
+        return totalPassageirosSubiram + totalPassageirosDesceram;
     }
 
 }
