@@ -3,6 +3,9 @@ import model.Trem;
 import model.Trilho;
 import model.ElementoTrilho;
 import utils.GerenciadorEstacoes;
+import java.util.ArrayList;
+import java.util.List;
+import utils.RelatorioUtils;
 
 public class Main {
 
@@ -49,8 +52,23 @@ public class Main {
 
                 index++;
             }
-        }   
-        
+        }
+
+        List<Estacao> listaEstacoes = new ArrayList<>();
+
+        for (ElementoTrilho e : trilho) {
+            if (e instanceof Estacao) {
+                listaEstacoes.add((Estacao) e);
+            }
+        }
+
+        RelatorioUtils.ordenarPorFluxo(listaEstacoes);
+
+        Estacao maior = RelatorioUtils.obterMaiorFluxo(listaEstacoes);
+
+        System.out.println("\n=== ESTAÇÃO COM MAIOR FLUXO ===");
+        System.out.println("Posição: " + maior.getPosicao());
+        System.out.println("Fluxo Total: " + maior.getFluxoTotal());
 
     }
 
