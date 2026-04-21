@@ -25,8 +25,7 @@ public class Estacao extends ElementoTrilho {
             throw new IllegalArgumentException("Valor Inválido");
         }
         passageirosPresentes += qtd;
-        pessoasSubindo = qtd; 
-        registrarMovimento(); 
+        pessoasSubindo = qtd;         
     }
 
     public void desembarcar(int qtd) {
@@ -35,7 +34,6 @@ public class Estacao extends ElementoTrilho {
         }
         passageirosPresentes -= qtd;
         pessoasDescendo = qtd;
-        registrarMovimento(); 
     }
 
     public int getPassageirosPresentes() {
@@ -62,6 +60,9 @@ public class Estacao extends ElementoTrilho {
     public void registrarMovimento() {
         totalPassageirosSubiram += pessoasSubindo;
         totalPassageirosDesceram += pessoasDescendo;
+
+        pessoasSubindo = 0;
+        pessoasDescendo = 0;
     }
 
     public int getTotalPassageirosSubiram() {

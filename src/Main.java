@@ -1,6 +1,4 @@
 import model.Estacao;
-import model.Trem;
-import model.Trilho;
 import model.ElementoTrilho;
 import utils.GerenciadorEstacoes;
 import java.util.ArrayList;
@@ -43,6 +41,8 @@ public class Main {
                     estacao.embarcar(dados[index][0]);
                     estacao.desembarcar(dados[index][1]);
 
+                    estacao.registrarMovimento();
+
                     System.out.println(estacao.getPosicao() +
                             " | Presentes: " + estacao.getPassageirosPresentes());
 
@@ -64,10 +64,16 @@ public class Main {
 
         RelatorioUtils.ordenarPorFluxo(listaEstacoes);
 
+        System.out.println("\n FLUXO DE TODAS AS ESTACOES ");
+        for (Estacao e : listaEstacoes) {
+            System.out.println("Posicao " + e.getPosicao() +
+                    " | Fluxo: " + e.getFluxoTotal());
+        }
+
         Estacao maior = RelatorioUtils.obterMaiorFluxo(listaEstacoes);
 
-        System.out.println("\n=== ESTAÇÃO COM MAIOR FLUXO ===");
-        System.out.println("Posição: " + maior.getPosicao());
+        System.out.println("\n ESTACAOO COM MAIOR FLUXO ");
+        System.out.println("Posicao: " + maior.getPosicao());
         System.out.println("Fluxo Total: " + maior.getFluxoTotal());
 
     }
