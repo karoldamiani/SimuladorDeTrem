@@ -1,5 +1,7 @@
 package model;
 
+import utils.StaticQueue;
+
 public class Estacao extends ElementoTrilho {
     private String nome;
     private int passageirosPresentes = 0;
@@ -25,7 +27,7 @@ public class Estacao extends ElementoTrilho {
             throw new IllegalArgumentException("Valor Inválido");
         }
         passageirosPresentes += qtd;
-        pessoasSubindo = qtd;         
+        pessoasSubindo = qtd;
     }
 
     public void desembarcar(int qtd) {
@@ -55,7 +57,6 @@ public class Estacao extends ElementoTrilho {
     public int getPessoasDescendo() {
         return pessoasDescendo;
     }
-    
 
     public void registrarMovimento() {
         totalPassageirosSubiram += pessoasSubindo;
@@ -71,13 +72,23 @@ public class Estacao extends ElementoTrilho {
 
     public int getTotalPassageirosDesceram() {
         return totalPassageirosDesceram;
-    }  
-    
+    }
 
     public int getFluxoTotal() {
         return totalPassageirosSubiram + totalPassageirosDesceram;
     }
 
+    
+    private StaticQueue<Trem> fila = new StaticQueue<>(10);
 
+    public void receberTrem(Trem trem) throws Exception {
+        System.out.println("Trem aguardando na ESTAÇÃO...");
+        fila.enqueue(trem);
+    }
+
+    public Trem liberarTrem() throws Exception {
+        System.out.println("Trem saindo da ESTAÇÃO...");
+        return fila.dequeue();
+    }
 
 }
