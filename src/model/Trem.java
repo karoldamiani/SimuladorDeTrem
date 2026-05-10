@@ -5,11 +5,17 @@ public class Trem {
     private int velocidade;
     private int passageiros;
     private int posicaoAtual;
+    private String nome;
 
     public Trem(int velocidade, int passageiros, int posicaoInicial) {
         this.velocidade = velocidade;
         this.passageiros = passageiros;
         this.posicaoAtual = posicaoInicial;
+    }
+
+    public Trem(String nome) {
+        this();
+        this.nome = nome;
     }
 
     public void mover() {
@@ -57,9 +63,15 @@ public class Trem {
     }
 
     public Trem() {
-    this.velocidade = 60;
-    this.passageiros = 0;
-    this.posicaoAtual = 0;
-}
+        this.velocidade = 60;
+        this.passageiros = 0;
+        this.posicaoAtual = 0;
+
+    }
+
+    @Override
+    public String toString() {
+        return nome != null ? nome : "Trem sem nome";
+    }
 
 }

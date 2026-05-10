@@ -4,10 +4,12 @@ import utils.GerenciadorEstacoes;
 import java.util.ArrayList;
 import java.util.List;
 import utils.RelatorioUtils;
+import model.Trem;
+import model.Desvio;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         ElementoTrilho[] trilho = new ElementoTrilho[10];
 
@@ -75,6 +77,34 @@ public class Main {
         System.out.println("\n ESTACAOO COM MAIOR FLUXO ");
         System.out.println("Posicao: " + maior.getPosicao());
         System.out.println("Fluxo Total: " + maior.getFluxoTotal());
+
+        System.out.println("\nTESTE PILHA (DESVIO)");
+
+        Desvio desvio = new Desvio();
+
+        Trem t1 = new Trem("Trem A");
+        Trem t2 = new Trem("Trem B");
+        Trem t3 = new Trem("Trem C");
+
+        desvio.receberTrem(t1);
+        desvio.receberTrem(t2);
+        desvio.receberTrem(t3);
+
+        System.out.println(desvio.liberarTrem());
+        System.out.println(desvio.liberarTrem());
+        System.out.println(desvio.liberarTrem());
+
+        System.out.println("\nTESTE FILA (ESTACAO) ");
+
+        Estacao estacaoTeste = new Estacao(99, "Estacao Teste");
+
+        estacaoTeste.receberTrem(t1);
+        estacaoTeste.receberTrem(t2);
+        estacaoTeste.receberTrem(t3);
+
+        System.out.println(estacaoTeste.liberarTrem());
+        System.out.println(estacaoTeste.liberarTrem());
+        System.out.println(estacaoTeste.liberarTrem());
 
     }
 

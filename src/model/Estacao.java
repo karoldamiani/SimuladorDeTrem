@@ -82,12 +82,12 @@ public class Estacao extends ElementoTrilho {
     private StaticQueue<Trem> fila = new StaticQueue<>(10);
 
     public void receberTrem(Trem trem) throws Exception {
-        System.out.println("Trem aguardando na ESTAÇÃO...");
+        System.out.println("Trem aguardando na ESTACAO");
         fila.enqueue(trem);
     }
 
     public Trem liberarTrem() throws Exception {
-        System.out.println("Trem saindo da ESTAÇÃO...");
+        System.out.println("Trem saindo da ESTACAO");
         return fila.dequeue();
     }
 
