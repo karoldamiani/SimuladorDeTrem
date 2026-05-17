@@ -5,14 +5,6 @@ public class Trilho {
     private NoTrilho<Elemento> inicio;
     private NoTrilho<Elemento> fim;
 
-    public NoTrilho<Elemento> getInicio() {
-        return inicio;
-    }
-
-    public NoTrilho<Elemento> getFim() {
-        return fim;
-    }
-
     public void adicionarElemento(Elemento elemento) {
         NoTrilho<Elemento> novo = new NoTrilho<>(elemento);
 
@@ -26,22 +18,28 @@ public class Trilho {
         }
     }
 
-    public void imprimirIdaEVolta() {
-
-        System.out.println("IDA:");
+   
+    public void imprimirIda() {
         NoTrilho<Elemento> atual = inicio;
         while (atual != null) {
-            System.out.print("[ ]");
+            System.out.print(atual.getElemento().exibir());
             atual = atual.getProximo();
         }
+        System.out.println();
+    }
 
-        System.out.println("\nVOLTA:");
-        atual = fim;
+   
+    public void imprimirVolta() {
+        NoTrilho<Elemento> atual = fim;
         while (atual != null) {
-            System.out.print("[ ]");
+            System.out.print(atual.getElemento().exibir());
             atual = atual.getAnterior();
         }
-
         System.out.println();
+    }
+
+    
+    public NoTrilho<Elemento> getInicio() {
+        return inicio;
     }
 }

@@ -18,8 +18,13 @@ public class Estacao extends ElementoTrilho {
     }
 
     @Override
-    public void exibir() {
-        System.out.println("Estação: " + nome + " na posição " + posicao);
+    public String exibir() {
+        return "[E]";
+    }
+
+    @Override
+    public String toString() {
+        return "Estacao " + nome + " (pos " + posicao + ")";
     }
 
     public void embarcar(int qtd) {
@@ -78,7 +83,6 @@ public class Estacao extends ElementoTrilho {
         return totalPassageirosSubiram + totalPassageirosDesceram;
     }
 
-    
     private StaticQueue<Trem> fila = new StaticQueue<>(10);
 
     public void receberTrem(Trem trem) throws Exception {

@@ -1,48 +1,55 @@
 import model.Estacao;
-import model.ElementoTrilho;
+import model.NoTrilho;
 import utils.GerenciadorEstacoes;
 import java.util.ArrayList;
 import java.util.List;
 import utils.RelatorioUtils;
 import model.Trem;
+import model.Trilho;
 import model.Desvio;
+import model.Elemento;
+import model.Trecho;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        ElementoTrilho[] trilho = new ElementoTrilho[10];
+        Trilho trilho = new Trilho();
 
-        trilho[2] = new Estacao(2, "Estacao A");
-        trilho[5] = new Estacao(5, "Estacao B");
+        trilho.adicionarElemento(new Trecho(0));
+        trilho.adicionarElemento(new Trecho(1));
+        trilho.adicionarElemento(new Estacao(2, "Estacao A"));
+        trilho.adicionarElemento(new Trecho(3));
+        trilho.adicionarElemento(new Trecho(4));
+        trilho.adicionarElemento(new Estacao(5, "Estacao B"));
+        trilho.adicionarElemento(new Trecho(6));
+        trilho.adicionarElemento(new Trecho(7));
+        trilho.adicionarElemento(new Trecho(8));
+        trilho.adicionarElemento(new Trecho(9));
 
-        for (int i = 0; i < trilho.length; i++) {
-            if (trilho[i] instanceof Estacao) {
-                System.out.print("[E]");
-            } else {
-                System.out.print("[ ]");
-            }
-        }
+        System.out.println("IDA:");
+        trilho.imprimirIda();
 
-        System.out.println("\n");
+        System.out.println("VOLTA:");
+        trilho.imprimirVolta();
 
         int numeroEstacoes = 2;
-
         GerenciadorEstacoes gerenciador = new GerenciadorEstacoes(numeroEstacoes);
         gerenciador.sortearPassageiros();
-
         int[][] dados = gerenciador.getDadosPassageiros();
 
         int index = 0;
+        NoTrilho<Elemento> atual = trilho.getInicio();
 
-        for (int i = 0; i < trilho.length; i++) {
-            if (trilho[i] instanceof Estacao) {
-                Estacao estacao = (Estacao) trilho[i];
+        while (atual != null) {
+            Elemento elemento = atual.getElemento();
+
+            if (elemento.exibir().equals("[E]")) {
+                Estacao estacao = (Estacao) elemento;
 
                 try {
                     estacao.embarcar(dados[index][0]);
                     estacao.desembarcar(dados[index][1]);
-
                     estacao.registrarMovimento();
 
                     System.out.println(estacao.getPosicao() +
@@ -54,14 +61,18 @@ public class Main {
 
                 index++;
             }
+
+            atual = atual.getProximo();
         }
 
         List<Estacao> listaEstacoes = new ArrayList<>();
 
-        for (ElementoTrilho e : trilho) {
-            if (e instanceof Estacao) {
-                listaEstacoes.add((Estacao) e);
+        atual = trilho.getInicio();
+        while (atual != null) {
+            if (atual.getElemento() instanceof Estacao) {
+                listaEstacoes.add((Estacao) atual.getElemento());
             }
+            atual = atual.getProximo();
         }
 
         RelatorioUtils.ordenarPorFluxo(listaEstacoes);
@@ -74,7 +85,7 @@ public class Main {
 
         Estacao maior = RelatorioUtils.obterMaiorFluxo(listaEstacoes);
 
-        System.out.println("\n ESTACAOO COM MAIOR FLUXO ");
+        System.out.println("\n ESTACAO COM MAIOR FLUXO ");
         System.out.println("Posicao: " + maior.getPosicao());
         System.out.println("Fluxo Total: " + maior.getFluxoTotal());
 
@@ -105,7 +116,6 @@ public class Main {
         System.out.println(estacaoTeste.liberarTrem());
         System.out.println(estacaoTeste.liberarTrem());
         System.out.println(estacaoTeste.liberarTrem());
-
     }
 
 }
