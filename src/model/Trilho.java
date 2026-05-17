@@ -25,4 +25,23 @@ public class Trilho {
             fim = novo;
         }
     }
+
+    public void imprimirIdaEVolta() {
+
+        System.out.println("IDA:");
+        NoTrilho<Elemento> atual = inicio;
+        while (atual != null) {
+            System.out.print("[ ]");
+            atual = atual.getProximo();
+        }
+
+        System.out.println("\nVOLTA:");
+        atual = fim;
+        while (atual != null) {
+            System.out.print("[ ]");
+            atual = atual.getAnterior();
+        }
+
+        System.out.println();
+    }
 }
