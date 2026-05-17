@@ -3,9 +3,14 @@ package model;
 public class Trilho {
 
     private NoTrilho<Elemento> inicio;
+    private NoTrilho<Elemento> fim;
 
     public NoTrilho<Elemento> getInicio() {
         return inicio;
+    }
+
+    public NoTrilho<Elemento> getFim() {
+        return fim;
     }
 
     public void adicionarElemento(Elemento elemento) {
@@ -13,12 +18,11 @@ public class Trilho {
 
         if (inicio == null) {
             inicio = novo;
+            fim = novo;
         } else {
-            NoTrilho<Elemento> atual = inicio;
-            while (atual.getProximo() != null) {
-                atual = atual.getProximo();
-            }
-            atual.setProximo(novo);
+            fim.setProximo(novo);
+            novo.setAnterior(fim);
+            fim = novo;
         }
     }
 }
