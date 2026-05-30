@@ -19,8 +19,7 @@ public class SimuladorController {
     private ConsoleView view;
     private int numeroEstacoes;
     private int tamanhoTrilho;
-
-    private static final int INICIO_MIN = 0;
+    
     private static final int FIM_SAIDA_MIN = 570;
 
      public SimuladorController() {
